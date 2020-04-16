@@ -7,6 +7,7 @@ import DateFnsUtils from '@date-io/date-fns';
 import Signify from './Signify';
 
 
+
 const Form: React.FC = () => {
 
   const [selectedDate, setSelectedDate] = useState<Date | null>(new Date('2014-08-18T21:11:54'));
@@ -18,6 +19,7 @@ const Form: React.FC = () => {
     // console.log(typeof date); 
   };
   
+
 
   return(
     <FormWrap>
@@ -65,6 +67,7 @@ const Form: React.FC = () => {
     </MuiPickersUtilsProvider>
         
         <Signify />
+
       </Content>
     </FormWrap>
   )
@@ -83,7 +86,7 @@ const Content = styled.div`
   flex-direction: column;
   justify-content: center;
   
-  div {
+  > div {
     padding: 5px 0;
   }
 `
