@@ -1,43 +1,39 @@
 import React from 'react';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 
-// interface Props {
-//   color: string
+interface Props {
+  color: string,
+  name: string
+}
+
+
+
+const Signify: React.FC<Props> = ({color, name}) => {
+
+  console.log(color);
   
-// }
-
-const colorOptions = [
-  {name: 'red', hex: '#FF0000'},
-  {name: 'blue', hex: '#0000FF'},
-  {name: 'green', hex: '#008000'}
-]
-
-const Signify: React.FC = () => {
-
-
-  const colorPalette = colorOptions.map( c => {
-    return <Swatch />
-  })
+  const Swatch = styled.div`
+    border-radius: 100%;
+    height: 40px;
+    width:  40px;
+    margin: 10px 5px;
+    background-color: ${color}
+  `
 
   return(
-    <Palette>
-      
-        
-      
-    </Palette>
+    <motion.div
+      whileHover={{scale: 1.2}}
+    >
+       <Swatch key={name}>
+     
+     </Swatch>
+    </motion.div>
   )
 };
 
-const Palette = styled.span`
-  display: flex;
-  justify-content: center;
-`
-const Swatch = styled.span`
-  border-radius: 100%;
-  
-  height: 50px;
-  width:  50px;
-`
+
+
 
 export default Signify;

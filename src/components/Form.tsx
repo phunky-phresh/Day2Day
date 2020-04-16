@@ -6,6 +6,12 @@ import DateFnsUtils from '@date-io/date-fns';
 
 import Signify from './Signify';
 
+const colorOptions = [
+  {name: 'red', hex: '#FF0000'},
+  {name: 'blue', hex: '#0000FF'},
+  {name: 'green', hex: '#008000'},
+  {name: 'yellow', hex: '#FFFF00'},
+]
 
 
 const Form: React.FC = () => {
@@ -19,7 +25,12 @@ const Form: React.FC = () => {
     // console.log(typeof date); 
   };
   
-
+  const colorPalette = colorOptions.map( c => {
+    console.log(c.name);
+    
+    return <Signify key={c.name} name={c.name} color={c.hex} />
+    
+  })
 
   return(
     <FormWrap>
@@ -66,7 +77,9 @@ const Form: React.FC = () => {
       </TimeWrap>
     </MuiPickersUtilsProvider>
         
-        <Signify />
+        <Palette>
+          {colorPalette}
+        </Palette>
 
       </Content>
     </FormWrap>
@@ -76,7 +89,7 @@ const Form: React.FC = () => {
 const FormWrap = styled.div`
   background-color: #e2e2e2;
   width: 50%;
-  height: 100%;
+  height: 100vh;
 
 `
 
@@ -112,6 +125,11 @@ const Hyph = styled.div`
     margin: 0;
     font-weight: 300;
   }
+`
+
+const Palette = styled.span`
+  display: flex;
+  justify-content: center;
 `
 
 export default Form;
