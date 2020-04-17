@@ -13,24 +13,35 @@ const colorOptions = [
   {name: 'yellow', hex: '#FFFF00'},
 ]
 
+interface Props {
+  handleName: (event: React.ChangeEvent<HTMLInputElement>) => string | void;
+  handleDetail: (event: React.ChangeEvent<HTMLInputElement>) => string | void;
 
-const Form: React.FC = () => {
+}
 
-  const [selectedDate, setSelectedDate] = useState<Date | null>(new Date('2014-08-18T21:11:54'));
+const Form: React.FC<Props> = ( {handleName, handleDetail} ) => {
+
+  const [ selectedStart, setStart ] = useState<Date | null>();
+  const [ selectedFinish, setFinish ] = useState<Date | null>();
 
   
-  const handleDateChange = (date: Date | null) => {
-    setSelectedDate(date);
-    console.log(date);
-    // console.log(typeof date); 
+  const handleStart = (start: Date | null) => {
+    console.log(start);
+    
+    setStart(start);
+  };
+
+  const handleFinish = (end: Date | null) => {
+    console.log(end);
+    
+    setFinish(end);
   };
   
-  const colorPalette = colorOptions.map( c => {
-    console.log(c.name);
-    
+  const colorPalette = colorOptions.map( c => {   
     return <Signify key={c.name} name={c.name} color={c.hex} />
-    
-  })
+  });
+
+
 
   return(
     <FormWrap>
@@ -40,13 +51,16 @@ const Form: React.FC = () => {
         id="outlined-search"
         label="Task/Assignment"
         type="text"
-        variant="outlined" />
+        variant="outlined" 
+        onChange={handleName}
+      />
         <TextField
           id="outlined-multiline-static"
           label="Multiline"
           multiline
           rows={4}
           variant="outlined"
+          onChange={handleDetail}
         />
 
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -55,8 +69,8 @@ const Form: React.FC = () => {
           margin="normal"
           id="time-picker"
           label="Start Time"
-          value={selectedDate}
-          onChange={handleDateChange}
+          value={selectedStart}
+          onChange={handleStart}
           KeyboardButtonProps={{
             'aria-label': 'change time',
           }}
@@ -68,8 +82,8 @@ const Form: React.FC = () => {
           margin="normal"
           id="time-picker"
           label="Finish Time"
-          value={selectedDate}
-          onChange={handleDateChange}
+          value={selectedFinish}
+          onChange={handleFinish}
           KeyboardButtonProps={{
             'aria-label': 'change time',
           }}

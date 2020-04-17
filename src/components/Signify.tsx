@@ -12,28 +12,28 @@ interface Props {
 
 const Signify: React.FC<Props> = ({color, name}) => {
 
-  console.log(color);
+  // console.log(color);
   
-  const Swatch = styled.div`
-    border-radius: 100%;
-    height: 40px;
-    width:  40px;
-    margin: 10px 5px;
-    background-color: ${color}
-  `
+
 
   return(
     <motion.div
       whileHover={{scale: 1.2}}
     >
-       <Swatch key={name}>
+       <Swatch color={color} key={name}>
      
      </Swatch>
     </motion.div>
   )
 };
 
-
+const Swatch = styled.div`
+border-radius: 100%;
+height: 40px;
+width:  40px;
+margin: 10px 5px;
+background-color: ${props => props.color}
+`
 
 
 export default Signify;
