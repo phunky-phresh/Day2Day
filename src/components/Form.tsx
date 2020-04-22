@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { FormGroup, TextField } from '@material-ui/core';
-import { KeyboardTimePicker, KeyboardDatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
+import { TextField, Button } from '@material-ui/core';
+import { KeyboardTimePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 
 import Signify from './Signify';
@@ -16,10 +16,10 @@ const colorOptions = [
 interface Props {
   handleName: (event: React.ChangeEvent<HTMLInputElement>) => string | void;
   handleDetail: (event: React.ChangeEvent<HTMLInputElement>) => string | void;
-
+  handleAdd: (event: React.ChangeEvent<HTMLFormElement>) => object | void;
 }
 
-const Form: React.FC<Props> = ( {handleName, handleDetail} ) => {
+const Form: React.FC<Props> = ( {handleName, handleDetail, handleAdd} ) => {
 
   const [ selectedStart, setStart ] = useState<Date | null>();
   const [ selectedFinish, setFinish ] = useState<Date | null>();
@@ -44,7 +44,7 @@ const Form: React.FC<Props> = ( {handleName, handleDetail} ) => {
 
 
   return(
-    <FormWrap>
+    <FormWrap onSubmit={handleAdd}>
       <Title>Form</Title>
       <Content>
         <TextField
@@ -95,16 +95,20 @@ const Form: React.FC<Props> = ( {handleName, handleDetail} ) => {
           {colorPalette}
         </Palette>
 
+{/* TODO: add onCLick handler to add activity to day planner and clear form */}
+    <Button type='submit' variant="outlined" color="primary" style={{width: '50%', margin: 'auto'}}>
+      Add Activity
+    </Button>
+
       </Content>
     </FormWrap>
   )
 };
 
-const FormWrap = styled.div`
+const FormWrap = styled.form`
   background-color: #e2e2e2;
   width: 50%;
   height: 100vh;
-
 `
 
 const Content = styled.div`
@@ -112,7 +116,6 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  
   > div {
     padding: 5px 0;
   }
