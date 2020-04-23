@@ -22,7 +22,9 @@ const DaySorted: React.FC = () => {
 
 const Day = styled.div`
   background-color: lavender;
-  width: 50%
+  width: 50%;
+  display: flex;
+  flex-direction: column;
 `
 const Title = styled.h1`
   text-align: center;
