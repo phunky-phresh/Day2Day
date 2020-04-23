@@ -13,6 +13,13 @@ const WorkSpace: React.FC = () => {
   const [ tasTime, setTime ] = useState('');
   const [ tasColor, setColor ] = useState('');
 
+  const tasks = [
+    {title: 'task1',
+    detail: 'this is the detail',
+    time: 3,
+    color: '#FF0000'}
+  ]
+
   // TODO: create state handler for array of activities to be passed to day planner
 
   const _handleName = (e: React.FormEvent<HTMLInputElement>) => {
@@ -40,6 +47,7 @@ const WorkSpace: React.FC = () => {
           handleAdd={_handleAdd }
       />
       <DaySorted />
+      {/* pass array of tasks to DaySorted. */}
     </Bench>
   )
 };
