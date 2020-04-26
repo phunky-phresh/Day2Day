@@ -39,6 +39,11 @@ const WorkSpace: React.FC = () => {
     setColor(color);
   }
 
+  const _clearState = () => {
+    setName('');
+    setDetail('');
+    setColor('');
+  }
   // TODO: set form submit to create new activity for day planner
   const _handleAdd = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -47,7 +52,7 @@ const WorkSpace: React.FC = () => {
     color: taskColor}
     console.log('clicked3');
     setList([...taskList, obj])
-    
+    _clearState();
   };
 
   return(
@@ -57,8 +62,14 @@ const WorkSpace: React.FC = () => {
           handleDetail={_handleDetail}
           handleColor={_handleColor}
           handleAdd={_handleAdd}
+
+          // values
+          name={taskName}
+          detail={taskDetail}
       />
-      <DaySorted />
+      <DaySorted 
+        list={taskList}
+      />
       {/* pass array of tasks to DaySorted. */}
     </Bench>
   )

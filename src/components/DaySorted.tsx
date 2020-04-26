@@ -1,20 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
 import DragComp from './DragComp';
-const tasks = 
-  {title: 'task1',
-  detail: 'this is the detail',
-  time: 3,
-  color: '#FF0000'}
+// const tasks = 
+//   {title: 'task1',
+//   detail: 'this is the detail',
+//   time: 3,
+//   color: '#FF0000'}
 
+export interface Package {
+  name: string;
+  detail: string;
+  color: string;
+}
+export interface Props {
+  list: Package[];
+}
 
-const DaySorted: React.FC = () => {
+const DaySorted: React.FC<Props> = ({list}) => {
   return(
     <Day>
       <Title>Day</Title>
       <DragComp 
-      tasks={tasks}
+        tasks={list}
       />
     </Day>
   )

@@ -18,9 +18,17 @@ interface Props {
   handleDetail: (event: React.ChangeEvent<HTMLInputElement>) => string | void;
   handleColor: (event: React.MouseEvent<HTMLDivElement>) => string | void;
   handleAdd: (event: React.ChangeEvent<HTMLFormElement>) => object | void;
+  // values: Values;
+  name: string;
+  detail: string;
 }
+// interface Values {
+//   name: string;
+//   detail: string;
+  
+// }
 
-const Form: React.FC<Props> = ( {handleName, handleDetail, handleColor, handleAdd} ) => {
+const Form: React.FC<Props> = ( {handleName, handleDetail, handleColor, handleAdd, name, detail} ) => {
 
   const [ selectedStart, setStart ] = useState<Date | null>();
   const [ selectedFinish, setFinish ] = useState<Date | null>();
@@ -54,7 +62,7 @@ const Form: React.FC<Props> = ( {handleName, handleDetail, handleColor, handleA
         type="text"
         variant="outlined" 
         onChange={handleName}
-        
+        value={name}
       />
         <TextField
           id="outlined-multiline-static"
@@ -63,6 +71,7 @@ const Form: React.FC<Props> = ( {handleName, handleDetail, handleColor, handleA
           rows={4}
           variant="outlined"
           onChange={handleDetail}
+          value={detail}
         />
 
     <MuiPickersUtilsProvider utils={DateFnsUtils}>

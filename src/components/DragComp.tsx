@@ -2,30 +2,30 @@ import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
-interface Tasks {
-  title: string;
+export interface Package {
+  name: string;
   detail: string;
-  time: number;
   color: string;
 }
 
-interface Props {
-  tasks: Tasks
+export interface Props {
+  tasks: Package[];
 }
 
 
-const DragComp: React.FC<Props> = ({tasks}) => {
-
+const DragComp: React.FC<Props> = (tasks) => {
+  console.log(tasks);
+  
   return(
    
       <Drag
         drag='y' 
         dragConstraints={{top: 0, bottom: 100}}
       >
-      <h4>{tasks.title}</h4>
-      <p>{tasks.detail}</p>
-      <p>{tasks.time}</p>
-      <p>{tasks.color}</p>
+      {/* <h4>{tasks}</h4>
+      <p>{tasks}</p>
+      
+      <p>{tasks}</p> */}
       </Drag>
   );
 };
