@@ -13,14 +13,15 @@ const WorkSpace: React.FC = () => {
   const [ taskTime, setTime ] = useState('');
   const [ taskColor, setColor ] = useState<string | null>('');
 
-  const [ taskList, setList ] = useState([])
+  // const tasks = 
+  // {title: 'task1',
+  // detail: 'this is the detail',
+  // time: 3,
+  // color: '#FF0000'}
 
-  // const tasks = [
-  //   {title: 'task1',
-  //   detail: 'this is the detail',
-  //   time: 3,
-  //   color: '#FF0000'}
-  // ]
+  const [ taskList, setList ] = useState<any>([]);
+
+ 
 
   // TODO: create state handler for array of activities to be passed to day planner
 
@@ -41,12 +42,12 @@ const WorkSpace: React.FC = () => {
   // TODO: set form submit to create new activity for day planner
   const _handleAdd = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    let obj = {title: taskName,
-      detail: taskDetail,
-      time: taskTime,
-      color: taskColor}
+    let obj =   {title: taskName,
+    detail: taskDetail,
+    color: taskColor}
     console.log('clicked3');
-    // setList(obj);
+    setList([...taskList, obj])
+    
   };
 
   return(

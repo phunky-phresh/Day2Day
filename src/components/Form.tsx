@@ -54,6 +54,7 @@ const Form: React.FC<Props> = ( {handleName, handleDetail, handleColor, handleA
         type="text"
         variant="outlined" 
         onChange={handleName}
+        
       />
         <TextField
           id="outlined-multiline-static"
