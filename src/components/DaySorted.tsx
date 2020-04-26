@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-// import DragComp from './DragComp';
+import DragComp from './DragComp';
 const tasks = 
   {title: 'task1',
   detail: 'this is the detail',
@@ -13,7 +13,9 @@ const DaySorted: React.FC = () => {
   return(
     <Day>
       <Title>Day</Title>
-      
+      <DragComp 
+      tasks={tasks}
+      />
     </Day>
   )
 };

@@ -16,10 +16,11 @@ const colorOptions = [
 interface Props {
   handleName: (event: React.ChangeEvent<HTMLInputElement>) => string | void;
   handleDetail: (event: React.ChangeEvent<HTMLInputElement>) => string | void;
+  handleColor: (event: React.MouseEvent<HTMLDivElement>) => string | void;
   handleAdd: (event: React.ChangeEvent<HTMLFormElement>) => object | void;
 }
 
-const Form: React.FC<Props> = ( {handleName, handleDetail, handleAdd} ) => {
+const Form: React.FC<Props> = ( {handleName, handleDetail, handleColor, handleAdd} ) => {
 
   const [ selectedStart, setStart ] = useState<Date | null>();
   const [ selectedFinish, setFinish ] = useState<Date | null>();
@@ -38,7 +39,7 @@ const Form: React.FC<Props> = ( {handleName, handleDetail, handleAdd} ) => {
   };
   
   const colorPalette = colorOptions.map( c => {   
-    return <Signify key={c.name} name={c.name} color={c.hex} />
+    return <Signify handleClick={handleColor} value={c.hex} key={c.name} name={c.name} color={c.hex} />
   });
 
 

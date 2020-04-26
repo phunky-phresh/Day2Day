@@ -4,13 +4,17 @@ import { motion } from 'framer-motion';
 
 
 interface Props {
-  color: string,
-  name: string
+  color: string;
+  name: string;
+  value: string;
+  handleClick: (event: React.MouseEvent<HTMLDivElement>) => string | void;
 }
 
 
 
-const Signify: React.FC<Props> = ({color, name}) => {
+
+
+const Signify: React.FC<Props> = ({color, name, handleClick}) => {
 
   // console.log(color);
   
@@ -20,7 +24,7 @@ const Signify: React.FC<Props> = ({color, name}) => {
     <motion.div
       whileHover={{scale: 1.2}}
     >
-       <Swatch color={color} key={name}>
+       <Swatch onClick={handleClick} color={color} key={name}>
      
      </Swatch>
     </motion.div>
