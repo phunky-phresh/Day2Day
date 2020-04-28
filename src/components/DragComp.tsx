@@ -9,12 +9,12 @@ export interface Package {
 }
 
 export interface Props {
-  tasks: Package[];
+  task: Package[];
 }
 
 
-const DragComp: React.FC<Props> = (tasks) => {
-  console.log(tasks);
+const DragComp: React.FC<Props> = ({task}) => {
+ 
   
   return(
    

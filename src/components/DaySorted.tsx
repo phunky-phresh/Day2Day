@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React,  {useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import DragComp from './DragComp';
@@ -18,12 +18,24 @@ export interface Props {
 }
 
 const DaySorted: React.FC<Props> = ({list}) => {
+
+  const [ theList, setList ] = useState<any>([])
+
+  useEffect(() => {
+    const listReturn = list.map((l) => {
+      setList([...theList, l]);
+    })
+  }, []);
+
+    
+  
   return(
     <Day>
       <Title>Day</Title>
-      <DragComp 
+      {/* <DragComp 
         tasks={list}
-      />
+      /> */}
+      {/* {taskList} */}
     </Day>
   )
 };
