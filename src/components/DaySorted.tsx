@@ -1,4 +1,4 @@
-import React,  {useState, useEffect } from 'react';
+import React,  {useState} from 'react';
 import styled from 'styled-components';
 
 import DragComp from './DragComp';
@@ -38,7 +38,11 @@ const DaySorted: React.FC<Props> = ({list}) => {
   // } else {
 if (list) {
   var listReturn = list.map( task => {
-    return <DragComp task={task}/>
+    return <DragComp 
+              title={task.title}
+              detail={task.detail}
+              color={task.color}
+            />
   })
   return(
     <Day>

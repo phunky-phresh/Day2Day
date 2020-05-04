@@ -21,17 +21,18 @@ const Signify: React.FC<Props> = ({color, name, handleClick}) => {
 
 
   return(
-    <motion.div
-      whileHover={{scale: 1.2}}
-    >
-       <Swatch onClick={handleClick} color={color} key={name}>
+    // <motion.div
+    //   whileHover={{scale: 1.2}}
+    // >
+       <Swatch whileHover={{scale: 1.2}}
+       onClick={handleClick} color={color} key={name}>
      
      </Swatch>
-    </motion.div>
+    // </motion.div>
   )
 };
 
-const Swatch = styled.div`
+const Swatch = styled(motion.div)`
 border-radius: 100%;
 height: 40px;
 width:  40px;
