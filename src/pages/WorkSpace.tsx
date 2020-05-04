@@ -19,7 +19,7 @@ const WorkSpace: React.FC = () => {
   // time: 3,
   // color: '#FF0000'}
 
-  const [ taskList, setList ] = useState<any>([]);
+  const [ taskList, setList ] = useState<any>(null);
 
  
 
@@ -47,11 +47,14 @@ const WorkSpace: React.FC = () => {
   // TODO: set form submit to create new activity for day planner
   const _handleAdd = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    let obj =   {title: taskName,
-    detail: taskDetail,
-    color: taskColor}
+    let obj =   {title: taskName, detail: taskDetail, color: taskColor}
     console.log('clicked3');
-    setList([...taskList, obj])
+    if (!taskList) {
+      setList([obj]);
+    } else {
+      setList([...taskList, obj]);
+    }
+    
     _clearState();
   };
 

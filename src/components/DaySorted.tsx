@@ -9,7 +9,7 @@ import DragComp from './DragComp';
 //   color: '#FF0000'}
 
 export interface Package {
-  name: string;
+  title: string;
   detail: string;
   color: string;
 }
@@ -19,25 +19,45 @@ export interface Props {
 
 const DaySorted: React.FC<Props> = ({list}) => {
 
-  const [ theList, setList ] = useState<any>([])
+  // const [ theList, setList ] = useState<any>(null)
 
-  useEffect(() => {
-    const listReturn = list.map((l) => {
-      setList([...theList, l]);
-    })
-  }, []);
+  // useEffect(() => {
+  // if (!theList) {
+  //     setList(list);
+  //   }
+
+  // }, []);
 
     
-  
+  // if (!theList) {
+  //   return(
+  //     <Day>
+  //       <Title>No plans</Title>
+  //     </Day>
+  //   )
+  // } else {
+if (list) {
+  var listReturn = list.map( task => {
+    return <DragComp task={task}/>
+  })
   return(
     <Day>
-      <Title>Day</Title>
-      {/* <DragComp 
-        tasks={list}
-      /> */}
-      {/* {taskList} */}
+      <Title>Plans</Title>
+      
+      {listReturn}
     </Day>
   )
+} else {
+  return(
+    <Day>
+      <Title>No plans</Title>
+     </Day>
+  )
+}
+
+
+  // }
+ 
 };
 
 const Day = styled.div`

@@ -2,14 +2,14 @@ import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
-export interface Package {
-  name: string;
+export interface Object {
+  title: string;
   detail: string;
   color: string;
 }
 
 export interface Props {
-  task: Package[];
+  task: Object;
 }
 
 
@@ -22,10 +22,10 @@ const DragComp: React.FC<Props> = ({task}) => {
         drag='y' 
         dragConstraints={{top: 0, bottom: 100}}
       >
-      {/* <h4>{tasks}</h4>
-      <p>{tasks}</p>
+      <h4>{task.title}</h4>
+      {/* <p>{task}</p>
       
-      <p>{tasks}</p> */}
+      <p>{task}</p> */}
       </Drag>
   );
 };
