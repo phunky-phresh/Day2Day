@@ -19,23 +19,7 @@ export interface Props {
 
 const DaySorted: React.FC<Props> = ({list}) => {
 
-  // const [ theList, setList ] = useState<any>(null)
 
-  // useEffect(() => {
-  // if (!theList) {
-  //     setList(list);
-  //   }
-
-  // }, []);
-
-    
-  // if (!theList) {
-  //   return(
-  //     <Day>
-  //       <Title>No plans</Title>
-  //     </Day>
-  //   )
-  // } else {
 if (list) {
   var listReturn = list.map( task => {
     return <DragComp 

@@ -37,7 +37,7 @@ border-radius: 100%;
 height: 40px;
 width:  40px;
 margin: 10px 5px;
-background-color: ${props => props.color}
+background-color: ${props => props.color};
 `
 
 

@@ -5,6 +5,9 @@ import Form from '../components/Form';
 import DaySorted from '../components/DaySorted';
 
 
+// TODO: landing page. asking for length of day (how many hours to fill)
+// also has small guide to app.
+
 
 const WorkSpace: React.FC = () => {
 
