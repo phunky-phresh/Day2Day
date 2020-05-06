@@ -35,10 +35,10 @@ const valuetext = (value: number) => {
   return `${value}h`;
 }
 function valueLabelFormat(value: number) {
-  const m = marks.findIndex((mark) => mark.value === value) ;
-  console.log(m);
-  
-  return m
+  // const m = marks.findIndex((mark) => mark.value === value) ;
+  // console.log(value);
+  const label = `${value/10}h`
+  return label;
 }
 
 
@@ -56,29 +56,37 @@ const Landing: React.FC = () => {
   }
 
   return(
+    <Main>
     <Wrap>
       <Typography id="discrete-slider-restrict" gutterBottom>
-        Restricted values
+       How long is your day?
       </Typography>
       <Slider
         value={timeValue}
-        // defaultValue={20}
         valueLabelFormat={valueLabelFormat}
-        // getAriaValueText={valuetext}
-        // aria-labelledby="discrete-slider-restrict"
+        getAriaValueText={valuetext}
+        aria-labelledby="discrete-slider-restrict"
         step={null}
         valueLabelDisplay="auto"
         marks={marks}
         onChange={_handleChange}
       />
     </Wrap>
-
-    
+    </Main>
   );
 }
+
+const Main = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+`
 const Wrap = styled.div`
   margin: 20px;
-  width: 300px;
+  width: 400px;
 `
 
 export default Landing;
